@@ -1,0 +1,21 @@
+{
+  "name": "estantemagicabackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoDias496/EstanteMagicaBackend.git"
+  },
+  "keywords": [],
+  "author": "Gustavo da Silva Dias",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GustavoDias496/EstanteMagicaBackend/issues"
+  },
+  "homepage": "https://github.com/GustavoDias496/EstanteMagicaBackend#readme"
+}
