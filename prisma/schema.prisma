@@ -14,8 +14,72 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement()) @unique
   name String @db.VarChar(100)
   email String @db.VarChar(100) @unique
   password String @db.VarChar
+
+  create_at DateTime @default(now())
+
+  @@map("user")
+}
+
+model Book {
+  id Int @id @default(autoincrement()) @unique
+  name String @db.VarChar(100)
+  author String @db.VarChar(100)
+  publisher String @db.VarChar(100)
+  yearOfPublication Int 
+  photo String @db.VarChar(250)
+  location String @db.VarChar(100)
+  description String @db.VarChar(500)
+
+  category Category @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  lends Lend[]
+
+  created_at DateTime @default(now())
+
+  @@map("book")
+}
+
+model Category {
+  id Int @id @default(autoincrement()) @unique
+  name String @db.VarChar(100)
+
+  books Book[]
+
+  created_at DateTime @default(now())
+
+  @@map("category")
+}
+
+model Member {
+  id Int @default(autoincrement()) @unique
+  email String @db.VarChar(100) @unique
+  phone String @db.VarChar(20)
+  birthDay DateTime 
+  cpf String @db.VarChar(14)
+  address String @db.VarChar(100)
+
+  created_at DateTime @default(now())
+
+  lends Lend[]
+
+  @@map("member")
+}
+
+model Lend {
+  id Int @default(autoincrement()) @unique
+  date DateTime
+  status String @db.VarChar(50)
+
+  member Member @relation(fields: [memberId], references: [id])
+  memberId Int
+
+  book Book @relation(fields: [bookId], references: [id])
+  bookId Int
+
+  @@map("lend")
 }
