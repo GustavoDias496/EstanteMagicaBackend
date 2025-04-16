@@ -19,7 +19,7 @@ export const DeleteById = async (id: number): Promise<void | Error> =>{
         return;
 
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return new Error('Erro ao apagar o usuário!')
     }
 };
