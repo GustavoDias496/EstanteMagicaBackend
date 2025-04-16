@@ -4,7 +4,7 @@ import { prisma } from '../../prisma';
 export const GetById = async (id: number): Promise<IUser | Error> =>{
     try {
         
-        const user = await prisma.user.findFirst({
+        const user = await prisma.user.findUnique({
             where:{
                 id
             }

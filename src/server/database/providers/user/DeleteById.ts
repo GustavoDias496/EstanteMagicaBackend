@@ -2,7 +2,7 @@ import { prisma } from '../../prisma';
 
 export const DeleteById = async (id: number): Promise<void | Error> =>{
     try {
-        const existingUser = await prisma.user.findFirst({
+        const existingUser = await prisma.user.findUnique({
             where: { id }
         });
 

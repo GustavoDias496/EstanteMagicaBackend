@@ -3,7 +3,7 @@ import { prisma } from '../../prisma';
 
 export const Create = async (user: Omit<IUser, 'id'>): Promise<number | Error> =>{
     try {
-        const existingUser = await prisma.user.findFirst({
+        const existingUser = await prisma.user.findUnique({
             where: { email: user.email }
         });
 
