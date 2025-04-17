@@ -2,7 +2,7 @@ import { prisma } from '../../prisma';
 
 export const DeleteById = async (id: number): Promise<void | Error> =>{
     try {
-        const existingUser = await prisma.user.findUnique({
+        const existingUser = await prisma.users.findUnique({
             where: { id }
         });
 
@@ -10,7 +10,7 @@ export const DeleteById = async (id: number): Promise<void | Error> =>{
             return new Error('Usuário não encontrado!');
         }
 
-        await prisma.user.delete({
+        await prisma.users.delete({
             where: {
                 id: id
             }

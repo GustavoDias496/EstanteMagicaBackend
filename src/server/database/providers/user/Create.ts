@@ -1,9 +1,9 @@
-import { IUser } from "../../models/User";
+import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
 export const Create = async (user: Omit<IUser, 'id'>): Promise<number | Error> =>{
     try {
-        const existingUser = await prisma.user.findUnique({
+        const existingUser = await prisma.users.findUnique({
             where: { email: user.email }
         });
 
@@ -11,7 +11,7 @@ export const Create = async (user: Omit<IUser, 'id'>): Promise<number | Error> =
             return new Error('Usuário já cadastrado!');
         }
 
-        const newUser = await prisma.user.create({
+        const newUser = await prisma.users.create({
             data: {
                 ...user
             }

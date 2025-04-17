@@ -1,10 +1,10 @@
-import { IUser } from "../../models/User";
+import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
 export const GetById = async (id: number): Promise<IUser | Error> =>{
     try {
         
-        const user = await prisma.user.findUnique({
+        const user = await prisma.users.findUnique({
             where:{
                 id
             }

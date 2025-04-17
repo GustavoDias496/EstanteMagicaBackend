@@ -1,4 +1,4 @@
-import { IUser } from "../../models/User";
+import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
 export const GetAll = async (
@@ -8,7 +8,7 @@ export const GetAll = async (
     try {
         const skip = (page - 1) * limit;
         
-        const users = await prisma.user.findMany({
+        const users = await prisma.users.findMany({
             skip,
             take: limit,
             orderBy: {

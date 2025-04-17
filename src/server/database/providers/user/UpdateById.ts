@@ -1,10 +1,10 @@
-import { IUser } from "../../models/User";
+import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
 export const UpdateById = async (id: number, user: IUser): Promise<void | Error> =>{
     try {
         
-        const existingUser = await prisma.user.findUnique({
+        const existingUser = await prisma.users.findUnique({
             where:{
                 id
             }
@@ -14,7 +14,7 @@ export const UpdateById = async (id: number, user: IUser): Promise<void | Error>
             return new Error('Usuário não encontrado!')
         }
 
-        await prisma.user.update({
+        await prisma.users.update({
             where: { id },
             data: {
                 ...user,
