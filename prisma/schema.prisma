@@ -57,6 +57,7 @@ model Category {
 
 model Member {
   id Int @default(autoincrement()) @unique
+  name String @db.VarChar(100)
   email String @db.VarChar(100) @unique
   phone String @db.VarChar(20)
   birthDay DateTime 
