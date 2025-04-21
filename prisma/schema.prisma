@@ -82,5 +82,7 @@ model Lend {
   book Book @relation(fields: [bookId], references: [id])
   bookId Int
 
+  created_at DateTime @default(now())
+
   @@map("lend")
 }
