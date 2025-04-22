@@ -13,7 +13,7 @@ export const createValidation = validation((getSchema) => ({
         email: yup.string().email().required(),
         password: yup.string().required()
     }))
-}))
+}));
 
 export const Create = async (req:Request, res:Response) => {
     
