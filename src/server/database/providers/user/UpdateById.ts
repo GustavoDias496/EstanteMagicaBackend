@@ -1,7 +1,7 @@
 import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
-export const UpdateById = async (id: number, user: IUser): Promise<void | Error> =>{
+export const UpdateById = async (id: number, user: Omit<IUser, 'id'>): Promise<void | Error> =>{
     try {
         
         const existingUser = await prisma.users.findUnique({
