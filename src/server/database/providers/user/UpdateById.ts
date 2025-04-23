@@ -1,3 +1,4 @@
+import { PasswordCrypto } from "../../../shared/services";
 import { IUser } from "../../models/Users";
 import { prisma } from '../../prisma';
 
@@ -14,10 +15,13 @@ export const UpdateById = async (id: number, user: Omit<IUser, 'id'>): Promise<v
             return new Error('Usuário não encontrado!')
         }
 
+        const hashedPassword = await PasswordCrypto.hashPassword(user.password);
+
         await prisma.users.update({
             where: { id },
             data: {
                 ...user,
+                password: hashedPassword
             }
         });
 
