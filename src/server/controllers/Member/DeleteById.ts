@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { validation } from "../../shared/middleware";
 import * as yup from 'yup';
 import { StatusCodes } from "http-status-codes";
+import { MemberProvider } from "../../database/providers/member";
 
 interface IParamProps { 
     id?: number;
@@ -23,4 +24,16 @@ export const DeleteById = async (req:Request<IParamProps>, res:Response) => {
         });
         return;
     }
+
+    const result = await MemberProvider.DeleteById(req.params.id);
+    
+    if(result instanceof Error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+            errors: {
+                default: result.message
+            }
+        });
+    }
+    
+    res.status(StatusCodes.NO_CONTENT).json();
 };
