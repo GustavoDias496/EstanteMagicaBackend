@@ -1,7 +1,7 @@
 import { ILend } from "../../models/Lend";
 import { prisma } from "../../prisma";
 
-export const UpdateById = async (id: number, lend: ILend): Promise<void | Error> => {
+export const UpdateById = async (id: number, lend: Omit<ILend, 'id'>): Promise<void | Error> => {
     try {
         
         const existingLend = await prisma.lend.findUnique({
