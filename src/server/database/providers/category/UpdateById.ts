@@ -1,7 +1,7 @@
 import { ICategory } from "../../models/Category";
 import { prisma } from "../../prisma";
 
-export const UpdateById = async (id: number, category: ICategory): Promise<void | Error> => {
+export const UpdateById = async (id: number, category: Omit<ICategory, 'id'>): Promise<void | Error> => {
     try {
         
         const existingCategory = await prisma.category.findUnique({
