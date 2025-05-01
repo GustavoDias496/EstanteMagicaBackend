@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { bookController, userController } from "../controllers";
+import { bookController, categoryController, userController } from "../controllers";
 
 const router = Router();
 
@@ -14,7 +14,16 @@ router.get('/user/:id', userController.GetByIdValidation, userController.GetById
 router.patch('/user/:id', userController.UpdateByIdValidation, userController.UpdateById);
 router.delete('/user/:id', userController.deleteByIdValidation, userController.DeleteById);
 
-router.post('/book', bookController.createValidation, bookController.Create)
+router.post('/book', bookController.createValidation, bookController.Create);
+router.get('/book', bookController.GetAllValidation, bookController.GetAll);
+router.get('/book/:id', bookController.GetByIdValidation, bookController.GetById);
+router.patch('/book/:id', bookController.UpdateByIdValidation, bookController.UpdateById);
+router.delete('/book/:id', bookController.deleteByIdValidation, bookController.DeleteById);
 
+router.post('/category', categoryController.createValidation, categoryController.Create);
+router.get('/category', categoryController.GetAllValidation, categoryController.GetAll);
+router.get('/category/:id', categoryController.GetByIdValidation, categoryController.GetById);
+router.patch('/category/:id', categoryController.UpdateByIdValidation, categoryController.UpdateById);
+router.delete('/category/:id', categoryController.deleteByIdValidation, categoryController.DeleteById);
 
 export { router };

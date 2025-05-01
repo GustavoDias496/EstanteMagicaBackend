@@ -4,7 +4,7 @@ export const DeleteById = async (id: number): Promise<void | Error> => {
     try {
 
         const existingLend = await prisma.lend.findUnique({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         if(!existingLend){
@@ -12,7 +12,7 @@ export const DeleteById = async (id: number): Promise<void | Error> => {
         }
 
         await prisma.lend.delete({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         return;

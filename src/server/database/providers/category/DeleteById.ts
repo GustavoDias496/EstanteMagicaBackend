@@ -4,7 +4,7 @@ export const DeleteById = async (id: number): Promise<void | Error> => {
     try {
 
         const existingCategory = await prisma.category.findUnique({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         if(!existingCategory){
@@ -12,7 +12,7 @@ export const DeleteById = async (id: number): Promise<void | Error> => {
         }
 
         await prisma.category.delete({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         return;

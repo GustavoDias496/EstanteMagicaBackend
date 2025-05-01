@@ -3,7 +3,7 @@ import { prisma } from "../../prisma"
 export const DeleteById = async (id: number): Promise<void | Error> => {
     try {
         const existingMember = await prisma.member.findUnique({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         if(!existingMember){
@@ -11,7 +11,7 @@ export const DeleteById = async (id: number): Promise<void | Error> => {
         }
 
         await prisma.member.delete({
-            where: { id }
+            where: { id: Number(id) }
         });
 
         return;
