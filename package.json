@@ -26,11 +26,13 @@
     "bcryptjs": "^3.0.2",
     "express": "^5.1.0",
     "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
     "prisma": "^6.6.0",
     "yup": "^1.6.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.14.0",
     "tsup": "^8.4.0",
     "tsx": "^4.19.3",
