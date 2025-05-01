@@ -4,7 +4,7 @@ import * as GetAll from './GetAll';
 import * as GetByid from './GetById';
 import * as UpdateById from './UpdateById';
 
-export const bookProvider = {
+export const bookController = {
     ...Create,
     ...DeleteById,
     ...GetAll,
